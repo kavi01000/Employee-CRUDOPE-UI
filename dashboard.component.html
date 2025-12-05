@@ -1,0 +1,63 @@
+<div class="dashboard-wrapper">
+
+  <h2 class="page-title">Dashboard</h2>
+
+  <div class="card-grid">
+
+    <!-- TOTAL EMPLOYEES -->
+    <mat-card class="dash-card card-blue">
+      <div class="icon-box">
+        <i class="bi bi-people-fill"></i>
+      </div>
+      <div class="content-box">
+        <h3>Total Employees</h3>
+        <p class="count">{{ employeeCount }}</p>
+      </div>
+    </mat-card>
+
+    <!-- ACTIVE EMPLOYEES -->
+    <mat-card class="dash-card card-green">
+      <div class="icon-box">
+        <i class="bi bi-person-check-fill"></i>
+      </div>
+      <div class="content-box">
+        <h3>Active Employees</h3>
+        <p class="count">{{ activeEmployeeCount }}</p>
+      </div>
+    </mat-card>
+
+    <!-- DEPARTMENTS -->
+    <mat-card class="dash-card card-orange">
+      <div class="icon-box">
+        <i class="bi bi-building"></i>
+      </div>
+      <div class="content-box">
+        <h3>Departments</h3>
+        <p class="count">{{ deptCount }}</p>
+      </div>
+    </mat-card>
+
+    <!-- QUALIFICATIONS -->
+    <mat-card class="dash-card card-purple">
+      <div class="icon-box">
+        <i class="bi bi-mortarboard-fill"></i>
+      </div>
+      <div class="content-box">
+        <h3>Qualifications</h3>
+        <p class="count">{{ qualificationCount }}</p>
+      </div>
+    </mat-card>
+
+  </div>
+
+</div>
+
+<footer class="app-footer">
+  <div class="footer-left">
+  © 2025 <span class="company-name">VKOMAK Technologies</span>
+</div>
+
+  <div class="footer-right">
+    {{ currentDate }}
+  </div>
+</footer>

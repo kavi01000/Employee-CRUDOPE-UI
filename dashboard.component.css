@@ -1,0 +1,95 @@
+.dashboard-wrapper {
+  padding: 20px;
+}
+
+.page-title {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 25px;
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 25px;
+}
+
+/* CARD STYLE */
+.dash-card {
+  display: flex;
+  align-items: center;
+  padding: 25px;
+  height: 170px;
+  border-radius: 18px;
+  color: white;
+  box-shadow: 0px 4px 12px rgba(0,0,0,0.15);
+  transition: transform .2s ease-in-out;
+}
+
+.dash-card:hover {
+  transform: translateY(-5px);
+}
+
+/* ICON STYLE */
+.icon-box {
+  font-size: 55px;
+  margin-right: 20px;
+}
+
+.content-box h3 {
+  font-size: 22px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.count {
+  font-size: 38px;
+  font-weight: 700;
+  margin-top: 8px;
+}
+
+/* CARD COLORS */
+.card-blue {
+  background: linear-gradient(135deg, #1e88e5, #42a5f5);
+}
+
+.card-green {
+  background: linear-gradient(135deg, #43a047, #66bb6a);
+}
+
+.card-orange {
+  background: linear-gradient(135deg, #fb8c00, #ffa726);
+}
+
+.card-purple {
+  background: linear-gradient(135deg, #8e24aa, #ba68c8);
+}
+
+
+.app-footer {
+  width: 100%;
+  padding: 19px 40px;
+  background: #f3f4f6;
+  border-top: 1px solid #dcdcdc;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 17px;
+  color: #444;
+  position: fixed;      /* Sticks to bottom */
+  bottom: 0;
+  left: 0;
+  z-index: 10;
+}
+
+.footer-left {
+  font-weight: 500;
+}
+
+.footer-right {
+  font-family: monospace;
+}
+.company-name {
+  color: #1976d2; /* Material Primary Blue */
+  font-weight: 500;
+}

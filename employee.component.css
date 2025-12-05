@@ -1,0 +1,707 @@
+html, body {
+  height: 100%;
+  overflow: hidden !important;
+  margin: 0;
+  padding: 0;
+}
+
+
+mat-card {
+  margin: 1 !important;  
+  /* REMOVE DEFAULT MARGIN */
+  padding: 0 !important;   /* REMOVE EXTRA SPACE */
+  box-sizing: border-box;
+      margin-left: 16px;
+    margin-right: 16px;
+    margin-top: 16px;
+}
+
+/* =======================
+   CARD STYLING
+======================= */
+.employee-card {
+  height: 644px;
+  display: flex;
+  flex-direction: column;
+  margin: 8 16px;
+  padding: -4px;
+}
+
+.custom-primary {
+  background-color: #3f51b5 !important; /* VKOMAK blue */
+  color: white !important;
+}
+
+/* =======================
+   HEADER AREA
+======================= */
+.card-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 29px;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+  margin-right: 70px;
+}
+
+.header-actions {
+  display: flex;
+  justify-content: flex-end;  /* Right alignment */
+}
+
+.toolbar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 17px;
+  margin-left: 10px;
+}
+
+/* SEARCH BOX */
+.search-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 270px;
+  height: 60px;
+  border: 1px solid  #444;
+  border-radius: 8px;
+  padding-left: 36px;
+  padding-right: 36px;
+}
+
+.search-icon {
+  position: absolute;
+  left: 10px;
+  
+}
+
+.search-input {
+  width: 100%;
+  height: 100%;
+  border: none;
+  outline: none;
+  font-size: 14px;
+}
+
+.clear-btn {
+  position: absolute;
+  right: 6px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+/* SAME HEIGHT/WIDTH FOR BUTTONS */
+.action-btn {
+    border-radius: 8px;
+  height: 58px;
+  min-width: 200px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Primary button styling */
+.custom-primary {
+  background-color: #3f51b5 !important;
+  color: #fff;
+}
+
+
+
+/* =======================
+   TABLE SCROLL AREA
+======================= */
+th mat-icon {
+  font-size: 18px;     /* change size */
+  height: 18px;        /* icon height */
+  width: 18px;         /* icon width */
+  line-height: 18px;   /* align vertically */
+  vertical-align: middle;
+  margin-left: 4px;    /* spacing from text */
+}
+
+.table-container {
+  height: 500px;
+  flex: 1;
+  overflow-y: auto !important;
+  overflow-x: auto;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+}/* =======================
+   FIXED HEADER
+======================= */
+.styled-table th {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: linear-gradient(90deg, #409efe, #0357aa);
+  color: #fff;
+  padding: 18px 10px;
+  font-size: 15px;
+  font-weight: 600;
+  text-align: center;
+  white-space: nowrap;
+}
+
+
+
+
+/* =======================
+   Table Header Styling
+======================= */
+.styled-table th.mat-header-cell {
+      margin-left: 29px;
+  background: #1a1a1a; /* Dark background for headers */
+  color: #fff;          /* Header text color */
+  position: relative;
+}
+
+
+
+
+/* =======================
+   GLOBAL TRUNCATE
+======================= */
+.styled-table td,
+.styled-table th {
+  white-space: nowrap;
+  overflow: hidden;
+  font-size: 16px;
+  text-overflow: ellipsis;
+  padding: 8px 12px;
+}
+
+/* ⭐ Required for Angular Material ellipsis */
+.styled-table td.mat-cell,
+.styled-table th.mat-header-cell {
+  display: inline-block;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* =======================
+   FIXED COLUMN WIDTHS + TRUNCATE
+======================= */
+
+.styled-table .mat-column-employeename {  width: 100px !important;  max-width: 100px;  min-width: 100px;}
+
+.styled-table .mat-column-email {  width: 140px;  max-width: 140px;  min-width: 140px;}
+
+.styled-table .mat-column-gender {  width: 80px;  max-width: 80px;  min-width: 80px;}
+
+.styled-table .mat-column-phoneNo { text-align: center !important;  width: 90px;  max-width: 90px;  min-width: 90px;}
+
+.styled-table .mat-column-dob { text-align: center !important;  width: 120px;  max-width: 120px;}
+
+.styled-table .mat-column-skills {  width: 130px;  max-width: 130px;  }
+
+.styled-table .mat-column-departmentName {   width: 130px; max-width: 130px; }
+
+.styled-table .mat-column-qualificationName {  width: 100px;  max-width: 100px;}
+
+.styled-table .mat-column-dateOfJoining {  text-align: center !important; width: 120px;  max-width: 120px;}
+
+.styled-table .mat-column-isActive {  width: 100px;  max-width: 100px;  min-width: 100px;}
+
+.styled-table .mat-column-action {   width: 110px;  max-width: 110px;  min-width: 110px;}
+
+/* =======================
+   TABLE ROW STYLE
+======================= */
+.styled-table td {
+  padding: 20px;
+  text-align: left !important;
+  border-bottom: 1px solid #eee;
+}
+
+/* Row hover */
+.styled-table tr:hover td {
+  background: #c0dbff;
+}
+
+/* =======================
+   ACTION ICONS (Show on Hover)
+======================= */
+.styled-table td.action-cell {
+  text-align: center !important;
+}
+
+.styled-table td.action-cell button {
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.2s;
+}
+
+.styled-table tr:hover td.action-cell button {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.status-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+}
+
+.status-text {
+  font-weight: 500;
+  color: var(--primary-color); /* Always primary color */
+}
+
+.status-icon {
+  font-size: 20px;
+}
+
+.app-footer {
+  width: 100%;
+  padding: 19px 40px;
+  background: #ffffff;
+  border-top: 1px solid #dcdcdc;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 17px;
+  color: #444;
+  position: fixed;      /* Sticks to bottom */
+  bottom: 0;
+  left: 0;
+  z-index: 10;
+}
+
+.footer-left {
+  font-weight: 500;
+}
+
+.footer-right {
+  font-family: monospace;
+}
+.company-name {
+  color: #1976d2; /* Material Primary Blue */
+  font-weight: 500;
+}
+
+
+/* --------------------------- */
+/*          MODAL CSS          */
+/* --------------------------- */
+
+.custom-modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.55);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.custom-modal {
+  width: 40%;
+  background: #fff;
+  border-radius: 14px;
+  overflow: hidden;
+  animation: popup 0.25s ease-out;
+
+  /* Modern Soft Shadow */
+  box-shadow:
+    0px 4px 12px rgba(61, 164, 196, 0.15),
+    0px 12px 28px rgba(78, 173, 228, 0.2);
+}
+
+
+@keyframes popup {
+  from { transform: scale(0.8); opacity: 0; }
+  to   { transform: scale(1); opacity: 1; }
+}
+
+.custom-modal {
+  animation: popup 0.25s ease-out, shadowGlow 0.35s ease-out;
+}
+
+@keyframes shadowGlow {
+  from {
+    box-shadow: 0 0 0 rgba(0,0,0,0);
+  }
+  to {
+    box-shadow:
+      0px 4px 12px rgba(0, 0, 0, 0.15),
+      0px 12px 28px rgba(8, 14, 20, 0.2);
+  }
+}
+
+/* WRAPPER FOR SCROLLING */
+.table-scroll-wrapper {
+  max-height: 420px;          /* Adjust height as you need */
+  overflow-y: auto;
+  overflow-x: hidden;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+}
+
+/* TABLE MUST FILL FULL WIDTH */
+.styled-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+/* FIX HEADER */
+.styled-table thead th {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+
+  background: linear-gradient(90deg, #409efe, #0357aa);
+  color: #fff;
+  padding: 16px 10px;
+  font-weight: 700;
+  text-align: center;
+  font-size: 15px;
+}
+
+/* ROUNDED CORNERS */
+.styled-table thead th:first-child {
+  border-top-left-radius: 10px;
+}
+
+.styled-table thead th:last-child {
+  border-top-right-radius: 10px;
+}
+
+/* ROWS */
+.styled-table td {
+  padding: 16px 12px;
+  text-align: center;
+  border-bottom: 1px solid #ececec;
+}
+
+/* HOVER EFFECT */
+.styled-table tbody tr:hover {
+  background: #cfe4ff;
+}
+
+/* ICON VISIBILITY ON HOVER */
+.styled-table td button {
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.2s;
+}
+
+.styled-table tr:hover td button {
+  opacity: 1;
+  pointer-events: auto;
+}/* Base Chip */
+.status-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 15px;
+  font-weight: 400;
+  width: auto;
+}
+
+/* Active Chip */
+.chip-active {
+  background-color: #ebeaea;  /* soft green */
+  
+  color:#000000;
+}
+.chip-active .chip-icon {
+  color: #0f8a20 !important;
+}
+
+/* Inactive Chip */
+.chip-inactive {
+  background-color:#ebeaea;   /* soft red */
+ 
+  color: #000000;
+}
+
+.chip-inactive .chip-icon {
+  color: #d90000 !important;
+}
+
+/* Icon size */
+.chip-icon {
+  margin-top: 10px;
+  font-size: 18px;
+}
+
+
+/* --------------------------- */
+/*         HEADER STYLE        */
+/* --------------------------- */
+.close-btn.style2 {
+  background: #ffffff;
+  border:  #000000;
+  color: #000000;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.close-btn.style2:hover {
+  background: #000;
+  transform: scale(1.1);
+}
+
+.close-btn {
+  background:white ;
+  border: none;
+  font-size: 24px;
+  color: rgb(0, 0, 0);
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.close-btn:hover {
+  color: #bbdefb;
+}
+
+.modal-header {
+  background: linear-gradient(to right,  #97cdff, #95ccfe   ); /* dark to light blue */
+  padding: 15px 20px;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modal-header h3 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+
+/* --------------------------- */
+/*          FORM GRID          */
+/* --------------------------- */
+
+.form-grid {
+  padding: 20px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+}
+/* Header height */
+.header-height {
+  Max-height: 20px; /* Adjust as needed */
+  vertical-align: middle;
+}
+
+
+/* GENDER */
+.gender-wrapper {
+  display: flex;
+  flex-direction: column;
+  margin-top: -4px;
+  margin-left: 10px;
+}
+
+/* Full width form fields */
+.full-width {
+  width: 100%;
+}
+
+/* Truncate select options and input text if too long */
+.mat-form-field-infix,
+.mat-select-value-text {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+/* Full width for form fields */
+.full-width {
+  width: 100%;
+}
+/* Truncate select options and input text if too long */
+.mat-form-field-infix,
+.mat-select-value-text {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+/* Full width for form fields */
+.full-width {
+  width: 100%;
+}
+
+/* Make Angular Material error message red */
+/* Make all mat-error text red */
+mat-error {
+ color:  rgb(252, 72, 72) !important;
+  font-size: 13px;   /* Optional */
+  font-weight: 500;  /* Optional */
+}
+
+
+/* Truncate mat-select panel options */
+.mat-select-panel .mat-option-text {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+/* Completely remove the MDC outline notch that creates the vertical line */
+::ng-deep .mat-mdc-form-field .mdc-notched-outline__notch {
+  border-left: none !important;
+  border-right: none !important;
+}
+
+/* Checkbox spacing */
+mat-checkbox {
+  margin-top: 10px;
+}
+
+/* Required field highlight */
+.mat-form-field.mat-form-field-invalid .mat-form-field-outline {
+  border-color: rgb(255, 0, 0) !important;
+}
+
+.mat-error {
+  font-size: 12px;
+  color: rgb(184, 22, 22);
+}
+
+/* Checkbox spacing */
+mat-checkbox {
+  margin-top: 10px;
+}
+
+
+/* Radio Button - Blue Inner and Outer Circle */
+.gender-wrapper ::ng-deep .mat-mdc-radio-button {
+  --mdc-theme-primary: #0357aa !important;
+  --mdc-radio-checked-color: #0357aa !important;
+  --mdc-radio-selected-icon-color: #0357aa !important;
+  --mdc-radio-selected-hover-icon-color: #0357aa !important;
+  --mdc-radio-selected-focus-icon-color: #0357aa !important;
+}
+
+
+.gender-wrapper ::ng-deep .mdc-radio__native-control:checked ~ .mdc-radio__background::before {
+  background-color: #0357aa !important;
+}
+
+.gender-wrapper ::ng-deep .mdc-radio::before {
+  background-color: #0357aa !important;
+}
+.checkbox-field {
+  display: flex;
+  align-items: center;
+  padding: 8px;
+}
+
+.checkbox-field .mat-checkbox {
+  margin-top: 0;
+}
+
+/* --------------------------- */
+/*       DROPDOWN WIDTH        */
+/* --------------------------- */
+
+
+
+
+.mb-3 {
+      display: flex;
+    align-items: center;
+    width: 727px;
+    padding: 13px 20px;
+    background: var(--mat-sys-on-error);
+    border: 1px solid var(--mat-minimal-pseudo-checkbox-disabled-selected-checkmark-color);
+    border-radius: 11px;
+    margin-top: -14px;
+    margin-left: 20px;
+
+}
+
+.mb-3 mat-checkbox {
+  margin: 0 !important;
+}
+
+/* Is Active Checkbox - Blue */
+/* CHECKED STATE – Blue */
+.mb-3 ::ng-deep .mat-mdc-checkbox .mdc-checkbox__native-control:checked ~ .mdc-checkbox__background {
+  border-color: #0357aa !important;        /* blue border */
+  background-color: #0357aa !important;    /* blue fill */
+
+  /* Ripple state layers (all blue) */
+  --mdc-checkbox-selected-focus-state-layer-color: #0357aa !important;
+  --mdc-checkbox-selected-hover-state-layer-color: #0357aa !important;
+  --mdc-checkbox-selected-pressed-state-layer-color: #0357aa !important;
+}
+
+/* UNCHECKED BORDER */
+.mb-3 ::ng-deep .mdc-checkbox__background {
+  border-color: #999 !important;  /* normal grey border */
+}
+
+/* LABEL STYLE */
+.mb-3 ::ng-deep .mat-mdc-checkbox-label {
+  color: #333 !important;
+  font-weight: 500 !important;
+}
+
+/* --------------------------- */
+/*         FOOTER STYLE        */
+/* --------------------------- */
+.modal-footer {
+  background: linear-gradient(to right,#97cdff, #95ccfe );
+  padding: 12px 20px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 15px;
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 12px;
+}
+
+.reset-btn {
+  background: white !important;
+  color: black !important;
+
+}
+
+.reset-btn:hover {
+  background: #f5f5f5 !important; /* light gray */
+}
+
+
+
+.active-box {
+  display: flex;
+  align-items: center;
+  height: 38px;              /* same height as normal input */
+  padding-left: 5px;
+}
+
+/* RESPONSIVE */
+@media(max-width: 768px) {
+  .custom-modal { width: 90%; }
+  .form-grid { grid-template-columns: 1fr; }
+}
+.full-width-datepicker .mat-datepicker-content {
+  width: 100% !important;        /* make panel 100% of parent */
+  min-width: 0 !important;       /* reset default min-width */
+  max-width: none !important;    /* remove max-width */
+}

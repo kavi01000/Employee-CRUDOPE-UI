@@ -1,0 +1,458 @@
+
+/* --------------------------- */
+/*        CARDS STYLING        */
+/* --------------------------- */
+.qualification-header-card{
+   padding: 5px;
+   margin-left: 16px;
+   margin-right: 12px;
+  margin-bottom: 6px;
+      height: 99px;
+    border-radius: 8px;
+}
+
+.qualification-table-card {
+  padding: 16px;
+    height: 668px;
+    margin: 8px 16px;
+    margin-top: 10px;
+  border-radius: 8px;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+}
+/* Container inside card */
+.toolbar-container {
+  display: flex;
+  justify-content: flex-end;   /* right align */
+  align-items: center;
+  gap: 16px;  
+  margin-top: -15px;                 /* spacing between search & button */
+  padding-left: 16px;          /* left padding inside card */
+  padding-right: 16px;
+}
+
+/* SEARCH FIELD */
+.search-field {
+  border-radius: 8px;
+  width: 260px;  
+                  /* SAME width as Add button */
+}
+
+/* Height control for search box */
+.search-field .mat-mdc-form-field-flex {
+  height: 56px !important;     /* SAME height as button */
+  align-items: center;
+}
+
+/* Icon (search / close) color — blue */
+.search-field .mat-mdc-form-field-icon-prefix,
+.search-field .mat-mdc-form-field-icon-suffix {
+  color: #0357aa !important;
+}
+
+/* Border color (blue) */
+.search-field .mat-mdc-form-field-outline {
+  --mdc-theme-primary: #0357aa;
+}
+
+.search-field input {
+  font-size: 15px;
+}
+
+/* ADD BUTTON */
+.add-btn {
+  width: 200px;       /* SAME width as search bar */
+  height: 56px;  
+  margin-bottom:23px; 
+  border-radius: 8px;    /* SAME height as search bar */
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+
+/* --------------------------- */
+/*   HEADER TOOLBAR: SEARCH + BUTTON  */
+/* --------------------------- */
+.toolbar {
+  padding: 16px;
+  margin-bottom: 5px;
+  gap: 15px;
+}
+
+
+
+/* --------------------------- */
+/* TABLE HEADERS               */
+/* --------------------------- */
+.styled-table th {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: linear-gradient(90deg, #409efe, #0357aa);
+  color: #ffffff;
+  padding: 10px 12px; /* increased padding for taller header */
+  font-size: 15px;
+  font-weight: 600;
+  text-align: left;
+  letter-spacing: 0.3px;
+  white-space: nowrap;
+  border-right: 1px solid rgba(185,22,22,0.18);
+}
+
+.styled-table th:first-child {
+  border-top-left-radius: 10px;
+}
+
+.styled-table th:last-child {
+  border-top-right-radius: 10px;
+}
+
+/* =============================== */
+/*      STATUS BOX STYLING         */
+/* =============================== */
+.status-box {
+  display: inline-flex;
+   align-items: center;
+  gap: 6px;               
+  padding: 6px 12px;       /* slightly larger for taller rows */
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 500;
+  justify-content: center; 
+}
+.styled-table td {
+  padding: 4px 5px;
+  font-size: 16px;
+  border-bottom: 1px solid #ececec;
+  text-align: left;
+  color: #333;
+}
+
+
+/* Active */
+/* CHIP BASE */
+.status-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 10px;
+  border-radius: 50px;      /* FULL CHIP SHAPE */
+  font-size: 14px;
+  font-weight: 400;         /* same weight */
+  width: fit-content;
+}
+
+/* ACTIVE CHIP */
+.chip-active {
+  background-color:  #ebeaea;   /* light green */
+  
+  color:  #292929;              /* text + icon color */
+}
+
+.chip-active .chip-icon {
+ 
+  color: #09a020 !important;   /* green icon */
+}
+
+/* INACTIVE CHIP */
+.chip-inactive {
+  background-color:  #ebeaea;   /* light red */
+
+  color: #292929;              /* text + icon color */
+}
+
+.chip-inactive .chip-icon {
+  color: #d90000 !important;   /* red icon */
+}
+
+
+/* Hide edit & delete buttons initially */
+.action-cell button {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease-in-out;
+}
+
+/* Show buttons only when hovering on the row */
+.mat-mdc-row:hover .action-cell button {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Optional row hover highlight */
+.mat-mdc-row:hover {
+  background-color: #f5faff !important;
+}
+
+
+
+/* =============================== */
+/*        SCROLLABLE TABLE BODY    */
+/* =============================== */
+.table-container {
+   width: 104%;
+    height: 668px;       /* increased table height */
+  overflow-y: auto;
+  overflow-x: auto;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  box-shadow: 0 4px 18px rgba(0,0,0,0.08);
+  margin: -32PX -32PX;
+}
+/* Center the entire IS ACTIVE column */
+.mat-column-isactive {
+  text-align: center !important;
+}
+mat-error {
+ color:  rgb(252, 72, 72) !important;
+  font-size: 13px;   /* Optional */
+  font-weight: 500;  /* Optional */
+}
+
+/* Sort Icon Size */
+th mat-icon {
+  font-size: 18px;     /* change size */
+  height: 18px;        /* icon height */
+  width: 18px;         /* icon width */
+  line-height: 18px;   /* align vertically */
+  vertical-align: middle;
+  margin-left: 4px;    /* spacing from text */
+}
+/* Table cells - reduced height */
+.styled-table td {
+  padding: 8px 16px;     /* smaller padding */
+  font-size: 18px;      /* slightly smaller text */
+  text-align: left;
+  color: #333;
+  border-bottom: 1px solid #ececec;
+}
+
+/* Optional: also reduce header height */
+.styled-table th {
+  padding: 8px 16px;     /* reduce header padding */
+  font-size: 20px;
+}
+
+/* Row hover effect */
+.styled-table tr:hover td {
+  background-color: #c0dbff;
+  transition: 0.2s;
+}
+
+.app-footer {
+  width: 100%;
+  padding: 19px 40px;
+ background: #ffffff;
+  border-top: 1px solid #dcdcdc;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 17px;
+  color: #444;
+  position: fixed;      /* Sticks to bottom */
+  bottom: 0;
+  left: 0;
+  z-index: 10;
+}
+
+.footer-left {
+  font-weight: 500;
+}
+
+.footer-right {
+  font-family: monospace;
+}
+.company-name {
+  color: #1976d2; /* Material Primary Blue */
+  font-weight: 500;
+}
+/* =============================== */
+/*            MODAL STYLING        */
+/* =============================== */
+.custom-modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.55);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+mat-error {
+  color:  rgb(255, 0, 0) !important;
+  font-size: 13px;   /* Optional */
+  font-weight: 500;  /* Optional */
+}
+.custom-modal {
+  width: 20%;
+  background: #fff;
+  border-radius: 14px;
+  overflow: hidden;
+  animation: popup 0.25s ease-out;
+  box-shadow: 0px 4px 12px rgba(61,164,196,0.15),
+              0px 12px 28px rgba(78,173,228,0.2);
+}
+.close-btn.style2 {
+background: #ffffff;
+  border: none;
+  color: #000000;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.close-btn.style2:hover {
+  background: #000;
+  transform: scale(1.1);
+}
+
+
+@keyframes popup {
+  from { transform: scale(0.8); opacity: 0; }
+  to   { transform: scale(1); opacity: 1; }
+}
+
+.modal-header {
+  background: linear-gradient(to right,#97cdff, #95ccfe );
+  padding: 15px 20px;
+  color: rgb(3, 3, 3);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modal-header h3 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.close-btn {
+    background:   #ffffff;     /* remove background */
+  border: 2px solid #000000;      /* blue border */
+  color: #000000;   
+  
+  color: #000000;
+  font-size: 24px;
+ 
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.close-btn:hover {
+  color: #bbdefb;
+}
+
+.modal-body {
+  padding: 20px;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+  padding: 10px 0;
+}
+/* Hide action buttons initially */
+.action-cell button {
+  opacity: 0;                 /* completely invisible */
+  pointer-events: none;       /* disable click when hidden */
+  transition: opacity 0.2s ease; /* smooth fade-in */
+}
+
+/* Show buttons only when hovering over the row */
+.mat-row:hover .action-cell button {
+  opacity: 1;                 /* visible */
+  pointer-events: auto;       /* enable click */
+}
+
+/* INPUT BOX STYLE */
+.isactive-field {
+  border: 1px solid #999;      /* input box blue border */
+  padding: 8px 16px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  height: 56px;
+  background: white;
+}
+
+/* Remove default checkbox margin */
+.isactive-field .mat-mdc-checkbox {
+  margin: 0 !important;
+}
+
+/* LABEL styling (blue) */
+.isactive-field ::ng-deep .mat-mdc-checkbox-label {
+  color: #0357aa !important;
+  font-weight: 500 !important;
+}
+
+/* UNCHECKED CHECKBOX – Blue border */
+.isactive-field ::ng-deep .mdc-checkbox__background {
+  border-color: #0357aa !important;
+}
+
+/* CHECKED CHECKBOX – Blue border + Blue fill */
+.isactive-field ::ng-deep 
+.mat-mdc-checkbox .mdc-checkbox__native-control:checked 
+~ .mdc-checkbox__background {
+  border-color: #0357aa !important;
+  background-color: #0357aa !important;
+
+  /* Ripple color */
+  --mdc-checkbox-selected-focus-state-layer-color: #0357aa !important;
+  --mdc-checkbox-selected-hover-state-layer-color: #0357aa !important;
+  --mdc-checkbox-selected-pressed-state-layer-color: #0357aa !important;
+}
+
+.modal-footer {
+  background: linear-gradient(to right,#97cdff, #95ccfe );
+  padding: 8px 22px;
+  display: flex;
+  justify-content: flex-end; /* keeps both buttons on the right */
+  align-items: center;       /* vertically center buttons */
+  gap: 12px;                 /* space between Reset and Save */
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 12px;
+  flex-wrap: wrap;           /* responsiveness */
+}
+
+/* COMMON BUTTON STYLING */
+.modal-footer button {
+  min-width: 90px;           /* uniform width */
+  height: 36px;              /* uniform height */
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 400;
+  padding: 8 16px;
+  display: flex;
+  justify-content: center;   /* text centered horizontally */
+  align-items: center;       /* text centered vertically */
+}
+
+.reset-btn {
+  background: white !important;
+  color: black !important;
+    font-weight: 200;
+}
+
+
+/* --------------------------- */
+/* RESPONSIVE                  */
+/* --------------------------- */
+@media (max-width: 768px) {
+  .custom-modal { width: 90%; }
+  .form-grid { grid-template-columns: 1fr; }
+  .search-box { width: 100%; margin-left: 0; }
+}

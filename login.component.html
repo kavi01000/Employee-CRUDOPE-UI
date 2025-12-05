@@ -1,0 +1,215 @@
+<div class="container-fluid auth-wrapper d-flex justify-content-center align-items-center">
+
+  <div class="auth-card d-flex">
+    <!-- LEFT WELCOME PANEL -->
+    <div class="auth-left d-flex flex-column justify-content-center align-items-center text-center px-4">
+
+      <h2 class="welcome-title">Welcome to VKOMAK</h2>
+
+      <p class="welcome-text-">
+        Access your personalized workspace by logging in. New users are invited to register now.
+      </p>
+    </div>
+
+    <!-- RIGHT FORM PANEL -->
+    <div class="auth-right">
+
+      <!-- Tabs -->
+     
+
+      <div class="tab-content">
+
+        <!-- REGISTER -->
+        <mat-tab-group [(selectedIndex)]="activeTabIndex" class="register-login-tabs">
+
+  <!-- REGISTER TAB -->
+  <mat-tab label="Register">
+    <div class="p-4">
+      <h3 class="text-center mb-4">Create Your Account</h3>
+
+      <form #registerForm="ngForm" (ngSubmit)="onRegister(registerForm)">
+
+        <!-- Full Name -->
+        <mat-form-field appearance="outline" class="w-100 mb-3">
+          <mat-label>User Name</mat-label>
+          <input matInput
+                 placeholder="Enter your User Name"
+                 name="fullName"
+                 required
+                 pattern="^[A-Za-z ]+$"
+                 [(ngModel)]="registerObj.fullName"
+                 #fullNameCtrl="ngModel">
+          <mat-error *ngIf="(registerForm.submitted || fullNameCtrl.touched) && fullNameCtrl.invalid">
+            Full name must contain letters only.
+          </mat-error>
+        </mat-form-field>
+
+        <!-- Email -->
+        <mat-form-field appearance="outline" class="w-100 mb-3">
+          <mat-label>Email</mat-label>
+          <input matInput
+                 placeholder="Enter Email"
+                 type="email"
+                 required
+                 email
+                 name="email"
+                 [(ngModel)]="registerObj.email"
+                 #emailCtrl="ngModel">
+          <mat-error *ngIf="(registerForm.submitted || emailCtrl.touched) && emailCtrl.invalid">
+            <span *ngIf="emailCtrl.errors?.['required']">Email is required.</span>
+            <span *ngIf="emailCtrl.errors?.['email']">Enter a valid Email.</span>
+          </mat-error>
+        </mat-form-field>
+
+        <!-- Password -->
+      <mat-form-field appearance="outline" class="w-100 mb-3">
+  <mat-label>Password</mat-label>
+
+  <input matInput
+         [type]="shPassword ? 'text' : 'password'"
+         placeholder="Enter Password"
+         name="password"
+         required
+         pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*#?&]).{8,}$"
+         [(ngModel)]="registerObj.password"
+         #passwordCtrl="ngModel">
+
+  <button mat-icon-button matSuffix type="button" (click)="togglePassword()">
+    <mat-icon>{{ shPassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+  </button>
+
+  <mat-error *ngIf="(registerForm.submitted || passwordCtrl.touched) && passwordCtrl.invalid">
+    <span *ngIf="passwordCtrl.errors?.['required']">Password is required.</span>
+    <span *ngIf="passwordCtrl.errors?.['pattern']">
+      Password must contain uppercase, lowercase, number, symbol and at least 8 characters.
+    </span>
+  </mat-error>
+</mat-form-field>
+
+
+        <!-- Confirm Password -->
+        <mat-form-field appearance="outline" class="w-100 mb-3">
+          <mat-label>Confirm Password</mat-label>
+          <input matInput
+                 [type]="shConfirmPassword ? 'text' : 'password'"
+                 placeholder="Confirm Password"
+                 name="confirmPassword"
+                 required
+                 [(ngModel)]="registerObj.confirmPassword"
+                 #confirmPasswordCtrl="ngModel">
+          <button mat-icon-button matSuffix type="button" (click)="shConfirmPassword = !shConfirmPassword">
+            <mat-icon>{{shConfirmPassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
+          <mat-error *ngIf="confirmPasswordCtrl.touched && confirmPasswordCtrl.errors?.['required']">
+            Confirm Password is required.
+          </mat-error>
+          <mat-error *ngIf="confirmPasswordCtrl.touched && registerObj.confirmPassword && registerObj.password !== registerObj.confirmPassword">
+            Passwords do not match.
+          </mat-error>
+        </mat-form-field>
+
+        <!-- Phone Number -->
+        <mat-form-field appearance="outline" class="w-100 mb-3">
+          <mat-label>Phone Number</mat-label>
+          <input matInput
+                 placeholder="Enter Phone Number"
+                 type="text"
+                 maxlength="10"
+                 required
+                 pattern="^[0-9]{10}$"
+                 name="phoneNo"
+                 [(ngModel)]="registerObj.phoneNo"
+                 #phoneCtrl="ngModel"
+                 (keypress)="allowNumbersOnly($event)">
+          <mat-error *ngIf="(registerForm.submitted || phoneCtrl.touched) && phoneCtrl.invalid">
+            <span *ngIf="phoneCtrl.errors?.['required']">Mobile number is required.</span>
+            <span *ngIf="phoneCtrl.errors?.['pattern']">Mobile number must be exactly 10 digits.</span>
+          </mat-error>
+        </mat-form-field>
+
+        <button mat-raised-button color="primary" class="w-100 mt-2" [disabled]="registerForm.invalid">
+          Sign Up
+        </button>
+    <div class="text-center mt-3">
+  <a (click)="goToChangePassword()" class="text-primary fw-semibold" style="cursor: pointer;">
+    Change Password?
+  </a>
+</div>
+
+      </form>
+    </div>
+  </mat-tab>
+
+  <!-- LOGIN TAB -->
+  <mat-tab label="Login">
+    <div class="p-4">
+      <h3 class="text-center mb-4">Login</h3>
+
+      <form #loginForm="ngForm" (ngSubmit)="onLogin(loginForm)">
+
+        <!-- Email / Phone / Name -->
+        <mat-form-field appearance="outline" class="w-100 mb-3">
+          <mat-label>Email / Phone / Name</mat-label>
+          <input matInput
+                 placeholder="Enter Email / Phone / Name"
+                 name="emailOrPhoneOrName"
+                 required
+                 [(ngModel)]="loginObj.emailOrPhoneOrName"
+                 #emailCtrl="ngModel">
+          <mat-error *ngIf="(loginForm.submitted || emailCtrl.touched) && emailCtrl.invalid">
+            Email / Phone / Name is required.
+          </mat-error>
+        </mat-form-field>
+
+        <!-- Password -->
+  <mat-form-field appearance="outline" class="w-100 mb-3">
+  <mat-label>Password</mat-label>
+
+  <input matInput
+         [type]="shPassword ? 'text' : 'password'"
+         name="password"
+         required
+         [(ngModel)]="loginObj.password"
+         #passwordCtrl="ngModel"
+         placeholder="Enter Password"
+        pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*#?&]).{8,}$" />
+
+  <button mat-icon-button matSuffix type="button" (click)="togglePassword()">
+    <mat-icon>{{ shPassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+  </button>
+
+  <mat-error *ngIf="(loginForm.submitted || passwordCtrl.touched) && passwordCtrl.invalid">
+    <span *ngIf="passwordCtrl.errors?.['required']">Password is required.</span>
+    <span *ngIf="passwordCtrl.errors?.['pattern']">
+      Password must include uppercase, 
+    </span>
+  </mat-error>
+</mat-form-field>
+
+
+        <button mat-raised-button color="primary" class="w-100 mt-2" [disabled]="loginForm.invalid">
+          Log In
+        </button>
+      </form>
+    </div>
+  </mat-tab>
+
+</mat-tab-group>
+
+
+       
+      </div>
+    </div>
+    <div class="toast-container position-fixed top-0 end-0 p-3">
+      <div #toastElement id="liveToast" class="toast custom-toast" role="alert" aria-live="assertive"
+        aria-atomic="true">
+        <div class="d-flex">
+          <div class="toast-body">{{ toastMessage }}</div>
+          <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast">
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

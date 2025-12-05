@@ -1,0 +1,60 @@
+<div class="sidenav"
+     [class.collapsed]="isCollapsed"
+     (mouseenter)="navService.setSidebarCollapsed(false)"
+     (mouseleave)="navService.setSidebarCollapsed(true)">
+
+  <!-- SIDEBAR HEADER -->
+  <div class="sidebar-header d-flex align-items-center px-3">
+    
+    <span *ngIf="!isCollapsed" class="sidebar-title">EMPLOYEE MANAGEMENT</span>
+  </div>
+
+  <hr class="divider">
+
+  <!-- NAV LIST -->
+  <ul class="nav-list list-unstyled">
+
+    <li *ngFor="let item of navItems"
+        class="nav-list-item"
+        [class.active]="(navService.selectedTitle$ | async) === item.label"
+        (mouseenter)="openedItem = item.label"
+        (mouseleave)="openedItem = null">
+
+      <!-- MAIN NAV ITEM -->
+      <div class="nav-item d-flex align-items-center justify-content-between"
+           (click)="onNavItemClick(item)">
+
+        <!-- LEFT SIDE: MAIN ICON + TEXT -->
+        <div class="d-flex align-items-center gap-2">
+          <i class="{{ item.icon }}"></i>
+          <span *ngIf="!isCollapsed">{{ item.label }}</span>
+        </div>
+
+        <!-- RIGHT SIDE: DROPDOWN ARROW -->
+        <i *ngIf="item.children && !isCollapsed"
+           class="{{ openedItem === item.label ? item.iconOpen : item.iconClosed }}">
+        </i>
+
+      </div>
+
+      <!-- SUBMENU -->
+  <ul *ngIf="item.children && openedItem === item.label && !isCollapsed"
+    class="submenu list-unstyled">
+
+  <li *ngFor="let child of item.children"
+      (click)="onChildClick(child, $event)">
+    <i class="{{ child.icon }}"></i>
+    {{ child.label }}
+  </li>
+
+</ul>
+
+    </li>
+  </ul>
+
+  <!-- SIDEBAR FOOTER -->
+  <div class="sidebar-footer text-center">
+    <span *ngIf="!isCollapsed">© 2025 All Rights Reserved</span>
+  </div>
+
+</div>

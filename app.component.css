@@ -1,0 +1,282 @@
+/* Reset any default body/margins that cause gaps */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* MAIN LAYOUT: sidebar + right-section are flex children */
+.main-layout {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  align-items: stretch; /* ensure children full height */
+}
+
+/* ---------------- SIDEBAR as fixed flex child ---------------- */
+.sidenav,
+main-layout app-sidenav,
+app-sidenav.sidenav {
+  flex: 0 0 250px; /* fixed width: 250px */
+  max-width: 250px;
+  min-width: 250px;
+  transition: flex-basis 0.28s ease, max-width 0.28s ease;
+  background: transparent !important; /* remove white background */
+  border-right: 1px solid rgba(0,0,0,0.06); /* optional thin border */
+  box-sizing: border-box;
+  display: block; /* ensure block-level layout */
+}
+
+/* collapsed sidebar: change the fixed width */
+.main-layout.sidebar-collapsed .sidenav,
+.main-layout.sidebar-collapsed app-sidenav,
+.main-layout.sidebar-collapsed app-sidenav.sidenav {
+  flex: 0 0 70px;
+  max-width: 70px;
+  min-width: 70px;
+}
+
+/* ---------------- RIGHT SECTION fills remaining space ---------------- */
+.right-section {
+  flex: 1 1 auto; /* take remaining space */
+  display: flex;
+  flex-direction: column;
+  min-width: 0; /* IMPORTANT to allow children to shrink and avoid overflow */
+  height: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+/* ---------------- HEADER (always full width of right-section) ---------------- */
+.app-header,
+.right-section app-header {
+  height: 60px;
+  flex: 0 0 60px;
+  width: 100%;           /* IMPORTANT: fills right-section width */
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+  background: transparent; /* make it visually joined with the sidebar */
+  border-left: none;       /* remove any left border that creates gap */
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+  transition: all 0.28s ease;
+  z-index: 2;
+}
+
+/* If you want header to share same bg as content, set background color */
+.main-layout .app-header {
+  background: #ffffff; /* or 'transparent' to blend with page */
+}
+
+/* PAGE CONTENT under header */
+.right-section .page-content {
+  flex: 1 1 auto;
+  overflow: auto;
+  padding: 20px;
+  background: #f0f2f5; /* page background */
+  min-width: 0; /* prevents overflow when sidebar collapses */
+}
+
+/* Optional: remove gap caused by focus outline or margins inside app-sidenav */
+app-sidenav, app-sidenav * {
+  margin: 0;
+  padding: 0;
+  outline: none;
+}
+
+/* Optional: ensure no stray left border on header when collapsed */
+.main-layout.sidebar-collapsed .app-header {
+  /* keep the same visual join — no extra left border */
+  border-left: none;
+}
+
+/* Small helper: remove any default gap from component host */
+:host, :root {
+  box-sizing: border-box;
+}
+.toast-message {
+  position: fixed;
+  top: 20px;         
+  left: 50%;          
+  transform: translateX(-50%); 
+  
+  padding: 12px 20px;
+  border-radius: 6px;
+  color: #fff;
+  font-weight: 500;
+  z-index: 99999;
+  animation: fadeInOut 3s ease forwards;
+  min-width: 250px;
+  text-align: center;
+}
+
+.toast-message.success {
+  background: #28a745;
+}
+
+.toast-message.error {
+  background: #dc3545;
+}
+
+@keyframes fadeInOut {
+  0% { opacity: 0; transform: translateY(-10px); }
+  10% { opacity: 1; transform: translateY(0); }
+  90% { opacity: 1; }
+  100% { opacity: 0; transform: translateY(-10px); }
+}
+/* BACKDROP */
+.popup-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+}
+
+/* MODAL CONTAINER */
+.popup-container {
+  width: 420px;
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
+  animation: fadeInScale 0.2s ease-out;
+}
+
+/* HEADER */
+.popup-header {
+  background: linear-gradient(to right,#97cdff, #95ccfe );     /* same as your Department modal */
+  padding: 14px 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.popup-header h3 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 500;
+  color: #2e2e2e;
+}
+
+.close-btn.style2 {
+  background: #ffffff;
+  border:  #000000;
+  color: #000000;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.close-btn.style2:hover {
+  background: #000;
+  transform: scale(1.1);
+}
+
+.close-btn {
+  background:white ;
+  border: none;
+  font-size: 24px;
+  color: rgb(0, 0, 0);
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.close-btn:hover {
+  color: #bbdefb;
+}
+
+/* BODY */
+.popup-body {
+  padding: 44px;
+  margin-left: -22px;
+  font-size: 15px;
+}
+.popup-body p {
+  text-align: right; /* Align text to the start */
+  margin: 0;
+  color: #000000; /* Dark color for the message */
+  font-weight: normal; /* optional */
+}
+
+/* FOOTER */
+.popup-footer {
+  background:linear-gradient(to right,#97cdff, #95ccfe );
+  padding: 8px 16px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 12px;
+}
+
+/* reset a little so browser/Material defaults don't interfere */
+button.dark-btn,
+button.primary-btn {
+  -webkit-appearance: none;
+  appearance: none;
+  border: none;
+  background: none;
+  padding: 0;
+  font: inherit;
+}
+
+/* shared button base */
+.btn-base {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 8px 18px;
+  border-radius: 6px;
+  font-size: 14px;
+  line-height: 1;
+  cursor: pointer;
+  transition: background-color .18s ease, border-color .18s ease, transform .08s;
+  user-select: none;
+  WIDTH:80PX;
+  min-height: 36px;
+  box-sizing: border-box;
+}
+
+/* dark cancel */
+.dark-btn.btn-base {
+  background-color: #ffffff;
+  color: #000000;
+  border: 1px solid #ffffff;
+}
+.dark-btn.btn-base:hover { background-color: #ffffff; border-color:#ffffff; }
+.dark-btn.btn-base:active { transform: translateY(1px); }
+
+/* primary / delete */
+.primary-btn.btn-base {
+  background-color: #3f51b5;
+  color: #fff;
+  border: 1px solid #3f51b5;
+}
+.primary-btn.btn-base:hover { background-color: #3f51b5;; border-color:#3f51b5;; }
+.primary-btn.btn-base:active { transform: translateY(1px); }
+
+/* disabled */
+.dark-btn[disabled].btn-base,
+.primary-btn[disabled].btn-base {
+  opacity: 0.55;
+  cursor: not-allowed;
+  transform: none;
+}
+
+
+/* POPUP ANIMATION */
+@keyframes fadeInScale {
+  0% { opacity: 0; transform: scale(0.8); }
+  100% { opacity: 1; transform: scale(1); }
+}

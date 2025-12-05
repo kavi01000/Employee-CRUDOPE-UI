@@ -1,0 +1,127 @@
+/* Full Center Wrapper */
+.container {
+  animation: fadeIn 0.6s ease-in-out;
+}
+
+
+/* Card Design */
+.card {
+  border-radius: 18px !important;
+  background: #ffffff;
+  padding: 35px !important;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.18) !important;
+  border: none !important;
+  transition: 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.25) !important;
+}
+
+/* Heading Styles */
+.card h3 {
+  font-weight: 700;
+  letter-spacing: 0.3px;
+}
+
+/* Forgot Password Title */
+.text-primary {
+  color: #0a9e55 !important;
+}
+
+/* Reset Password Title */
+.text-success {
+  color: #0a8a4c !important;
+}
+
+/* Input Group Modern */
+.card .form-label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #444;
+}
+
+.card .form-control {
+  height: 48px;
+  border-radius: 10px;
+  background: #f8f8f8;
+  border: 1.5px solid #d6d6d6;
+  font-size: 15px;
+  padding: 10px 14px;
+  transition: 0.3s ease;
+}
+
+/* Hover + Focus Effects */
+.card .form-control:hover {
+  border-color: #0a9e55;
+}
+
+.card .form-control:focus {
+  outline: none;
+  background: #ffffff;
+  border-color: #0a9e55;
+  box-shadow: 0 0 6px rgba(10, 158, 85, 0.25);
+}
+
+/* Buttons Common Style */
+.card .btn {
+  height: 48px;
+  border-radius: 10px;
+  font-weight: 600;
+  letter-spacing: 0.4px;
+  font-size: 16px;
+  transition: 0.3s ease;
+  border: none !important;
+}
+
+/* Forgot Button */
+.card .btn-primary {
+  background: linear-gradient(135deg, #0a9e55, #087c46);
+  box-shadow: 0 4px 12px rgba(10, 158, 85, 0.35);
+}
+
+.card .btn-primary:hover {
+  background: linear-gradient(135deg, #087c46, #066534);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(10, 158, 85, 0.45);
+}
+
+/* Reset Button */
+.card .btn-success {
+  background: linear-gradient(135deg, #0b9e5a, #087c46);
+  box-shadow: 0 4px 12px rgba(10, 158, 85, 0.35);
+}
+
+.card .btn-success:hover {
+  background: linear-gradient(135deg, #087c46, #065b36);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(10, 158, 85, 0.45);
+}
+
+/* Back to Login Link */
+.card a {
+  font-size: 14px;
+  color: #6c757d !important;
+  transition: 0.3s ease;
+}
+
+.card a:hover {
+  color: #0a9e55 !important;
+  letter-spacing: 0.3px;
+}
+
+/* Toast Styling */
+.toast {
+  border-radius: 10px !important;
+  background: #3a3a3a !important;
+  color: #fff !important;
+  font-size: 15px;
+  padding: 10px;
+}
+
+/* Fade-in Animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}

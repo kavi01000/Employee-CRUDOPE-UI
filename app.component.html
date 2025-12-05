@@ -1,0 +1,64 @@
+<!-- AUTH PAGES (Login + Change Password) -->
+<!-- LOGIN PAGE -->
+<ng-container *ngIf="isAuthPage; else mainLayout">
+  <div class="full-page-wrapper">
+    <router-outlet></router-outlet>
+  </div>
+</ng-container>
+
+<!-- MAIN LAYOUT -->
+<ng-template #mainLayout>
+  <div class="main-layout">
+
+    <!-- SIDEBAR (Hidden until header arrow hover) -->
+    <app-sidenav></app-sidenav>
+
+    <!-- RIGHT PAGE SECTION -->
+    <div class="right-section">
+
+      <!-- HEADER -->
+      <app-header></app-header>
+
+      <!-- CONTENT -->
+      <div class="page-content">
+        <router-outlet></router-outlet>
+      </div>
+
+    </div>
+  </div>
+</ng-template>
+
+<div *ngIf="toast.show" class="toast-message" [ngClass]="toast.type">
+  {{ toast.message }}
+</div>
+<!-- Delete / Confirm Modal -->
+
+<div class="popup-backdrop" *ngIf="showModal">
+  <div class="popup-container">
+    
+    <!-- HEADER -->
+    <div class="popup-header">
+      <h3>{{ modalTitle }}</h3>
+        <button class="close-btn style2" (click)="confirmModal(false)">
+  <i class="bi bi-x"></i>
+</button>
+    </div>
+
+    <!-- BODY -->
+    <div class="popup-body">
+  <p class="text-start">{{ modalMessage }}</p>
+</div>
+
+    <!-- FOOTER -->
+    <div class="popup-footer">
+<button type="button" class="dark-btn btn-base" (click)="confirmModal(false)">Cancel</button>
+<button type="button" class="primary-btn btn-base" (click)="confirmModal(true)">Delete</button>
+
+
+
+    </div>
+
+  </div>
+</div>
+
+<router-outlet></router-outlet>

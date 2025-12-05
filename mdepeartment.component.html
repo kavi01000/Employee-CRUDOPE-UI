@@ -1,0 +1,214 @@
+<mat-card class="department-toolbar-card">
+
+  <div class="toolbar d-flex justify-content-end align-items-center">
+
+    <!-- Search box -->
+    <mat-form-field appearance="outline" class="search-field">
+
+  <mat-icon matPrefix>search</mat-icon>
+
+  <input
+    matInput
+    placeholder="Search"
+    [(ngModel)]="searchTerm"
+  />
+
+  <button
+    mat-icon-button
+    matSuffix
+    *ngIf="searchTerm"
+    (click)="clearSearch()">
+    <mat-icon>close</mat-icon>
+  </button>
+
+</mat-form-field>
+
+
+    <!-- Add department -->
+  <button mat-raised-button 
+        color="primary" 
+        class="add-dept-btn"
+        (click)="openAddModal()">
+  <mat-icon>add</mat-icon>
+  Add Department
+</button>
+
+  </div>
+
+</mat-card>
+<mat-card class="department-table-card">
+
+  <div class="table-container">
+
+    <table mat-table [dataSource]="filteredDepartments" class="styled-table">
+
+<!-- Department Name -->
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef class="text-center col-name"
+        (click)="sortData('departmentName')">
+      Department
+      <mat-icon>
+        {{ sortColumn === 'departmentName' ? (sortDirection === 'asc' ? 'arrow_upward' : 'arrow_downward') : 'swap_vert' }}
+      </mat-icon>
+    </th>
+    <td mat-cell *matCellDef="let element" class="col-name">
+      <span matTooltip="{{ element.departmentName }}">
+        {{ element.departmentName }}
+      </span>
+    </td>
+  </ng-container>
+
+  <!-- Department Code -->
+  <ng-container matColumnDef="code">
+    <th mat-header-cell *matHeaderCellDef class="text-center col-code"
+        (click)="sortData('departmentCode')">
+      Department Code
+      <mat-icon>
+        {{ sortColumn === 'departmentCode' ? (sortDirection === 'asc' ? 'arrow_upward' : 'arrow_downward') : 'swap_vert' }}
+      </mat-icon>
+    </th>
+    <td mat-cell *matCellDef="let element" class="col-code">
+      <span matTooltip="{{ element.departmentCode }}">
+        {{ element.departmentCode }}
+      </span>
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="isactive">
+  <th mat-header-cell *matHeaderCellDef class="text-center col-isActive"
+      (click)="sortData('isActive')">
+   Status
+    <mat-icon>
+      {{ sortColumn === 'isActive' ? (sortDirection === 'asc' ? 'arrow_upward' : 'arrow_downward') : 'swap_vert' }}
+    </mat-icon>
+  </th>
+ <td mat-cell *matCellDef="let element" class="col-isActive">
+  <span class="status-chip" [ngClass]="element.isActive ? 'active-chip' : 'inactive-chip'">
+    <mat-icon class="chip-icon">
+      {{ element.isActive ? 'check_circle' : 'cancel' }}
+    </mat-icon>
+    {{ element.isActive ? 'Active' : 'Inactive' }}
+  </span>
+</td>
+
+</ng-container>
+
+
+  <!-- Actions -->
+  <ng-container matColumnDef="action">
+    <th mat-header-cell *matHeaderCellDef class="text-center col-action">Actions</th>
+    <td mat-cell *matCellDef="let element" class="text-center col-action">
+      <button mat-icon-button color="primary" matTooltip="Edit Department" (click)="openEditModal(element)">
+        <mat-icon>edit</mat-icon>
+      </button>
+      <button mat-icon-button color="primary" matTooltip="Delete Department" (click)="deleteDepartment(element)">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </td>
+  </ng-container>
+
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+      <!-- No Data -->
+      <tr *ngIf="filteredDepartments.length === 0">
+        <td colspan="4" class="text-center text-muted py-3">No departments found</td>
+      </tr>
+
+    </table>
+
+  </div>
+
+</mat-card>
+
+
+
+<!-- TABLE FOOTER -->
+<!-- SIMPLE FOOTER -->
+<footer class="app-footer">
+  <div class="footer-left">
+  © 2025 <span class="company-name">VKOMAK Technologies</span>
+</div>
+
+  <div class="footer-right">
+    {{ currentDate }}
+  </div>
+</footer>
+
+<!-- === MODAL === -->
+<div class="custom-modal-backdrop" *ngIf="showModal">
+  <div class="custom-modal">
+
+    <!-- 🔹 Modal Header -->
+    <div class="modal-header">
+      <h3 class="headertext">{{ modalTitle }}</h3>
+      <button class="close-btn style2" (click)="closeModal()">
+  <i class="bi bi-x"></i>
+</button>
+    </div>
+
+    <!-- 🔹 Modal Body -->
+    <div class="modal-body">
+
+      <!-- Department Name -->
+      <mat-form-field appearance="outline" class="w-100 mb-3">
+        <mat-label>Department Name</mat-label>
+        <input 
+          matInput 
+          required 
+          [(ngModel)]="currentDept.departmentName"
+          #deptName="ngModel"
+        />
+        <mat-error *ngIf="deptName.invalid && deptName.touched">
+          Department name is required.
+        </mat-error>
+      </mat-form-field>
+
+      <!-- Department Code -->
+      <mat-form-field appearance="outline" class="w-100 mb-3">
+        <mat-label>Department Code</mat-label>
+        <input 
+          matInput 
+          required 
+          [(ngModel)]="currentDept.departmentCode"
+          #deptCode="ngModel"
+        />
+        <mat-error *ngIf="deptCode.invalid && deptCode.touched">
+          Department code is required.
+        </mat-error>
+      </mat-form-field>
+
+      <!-- ✔ IsActive Checkbox -->
+     
+<div class="isactive-field">
+  <mat-checkbox [(ngModel)]="currentDept.isActive">
+    Is Active
+  </mat-checkbox>
+</div>
+
+    </div>
+ 
+      
+
+    <!-- 🔹 Modal Footer -->
+   <div class="modal-footer">
+
+  <button mat-stroked-button  class="reset-btn" (click)="resetForm()">
+    Reset
+  </button>
+
+<button 
+  mat-raised-button color="primary" 
+  [ngClass]="{ 'disabled-look': deptName.invalid || deptCode.invalid }"
+  [disabled]="deptName.invalid || deptCode.invalid"
+  (click)="saveDepartment()"
+>
+  Save
+</button>
+
+
+</div>
+ 
+  </div>
+</div>

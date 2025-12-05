@@ -1,0 +1,140 @@
+/* ============================================================
+   SIDEBAR MAIN CONTAINER
+============================================================= */
+.sidenav {
+  width: 280px;
+  height: 100vh;
+  background: #ffffff;
+  transition: width 0.3s ease;
+  position: fixed;
+  top: 0;
+  left: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  box-shadow: 2px 0 8px rgba(0,0,0,0.15);
+  z-index: 2000;
+}
+
+/* COLLAPSED SIDENAV */
+.sidenav.collapsed {
+  width: 0;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* ============================================================
+   HEADER (NO BREAK, ALWAYS SINGLE LINE)
+============================================================= */
+.sidebar-header {
+  height: 70px;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  white-space: nowrap;         /* ❗ Prevents breaking */
+  overflow: hidden;            /* ❗ Hides text overflow */
+  text-overflow: ellipsis;     /* ❗ Shows … when text long */
+  font-size: 18px;
+  font-weight: 600;
+  color: #000000;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+/* Submenu title inside header */
+.sidebar-header .submenu-title {
+  font-size: 15px;
+  font-weight: 400;
+  color: #666;
+  margin-left: 8px;
+}
+
+/* ============================================================
+   NAV ITEMS
+============================================================= */
+.nav-list {
+  padding: 0;
+  margin: 0;
+  
+}
+
+.nav-item {
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  color: #000000;
+  font-size: 18px;
+  font-weight: 400;
+  cursor: pointer;
+  border-left: 4px solid transparent;
+  transition: all 0.2s;
+  white-space: nowrap;   
+     /* Avoid break */
+}
+
+.nav-item i {
+  font-size: 22px;
+  font-weight: 800;
+  color: #000000;
+  margin-right: 12px;
+}
+
+/* HOVER */
+.nav-item:hover {
+  background: #f0f7ff;
+  border-left: 3px solid #0275ff;
+}
+
+/* ACTIVE */
+.nav-item.active {
+  background: #e7f1ff;
+  border-left: 3px solid #0275ff;
+  font-weight: 600;
+}
+
+/* ============================================================
+   SUBMENU
+============================================================= */
+li:hover > .submenu {
+  display: block !important;
+}
+
+.submenu {
+  display: none;
+  padding-left: 20px; /* reduce from 25px */
+  margin-top: 6px;
+}
+.submenu li {
+  display: flex;                 /* IMPORTANT */
+  align-items: center;           /* Center icon + text nicely */
+  gap: 20px;                     /* Space between icon & label */
+  
+  padding: 8px 20px;
+  margin-top: 10px;
+  padding-left: 25px;
+  font-size: 17px;
+  color: #000000;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.submenu li:hover {
+  background: #eaf3ff;
+  border-radius: 4px;
+}
+
+/* ============================================================
+   FOOTER
+============================================================= */
+.sidebar-footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 20px;
+  text-align: center;
+  color: #000000;
+  border-top: 1px solid #e5e5e5;
+}
+
+.divider {
+  margin: 0;
+  border-color: #d1d1d1;
+}

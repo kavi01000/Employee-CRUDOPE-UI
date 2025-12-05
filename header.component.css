@@ -1,0 +1,128 @@
+/* HEADER */
+.app-header {
+  width: 100%;
+  height: 70px;
+  padding: 0 1.5rem;
+  background-color: #ffffff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  display: flex;
+  align-items: center;
+  gap: 20px;                     /* space between button and title */
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+}
+.text-sidebar {
+  color: #000000; /* your sidebar blue */
+  font-weight: 700;
+  font-size: 18px;
+}
+
+/* BRAND SECTION */
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0;                    /* ensure no auto-centering */
+  flex-grow: 0;                 /* prevent expanding */
+  flex-shrink: 0;               /* prevent shrinking */
+  justify-content: flex-start;  /* force left alignment */
+}
+.toggle-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #ffffff !important;
+  box-shadow: 0 0 6px rgba(0,0,0,0.15);
+  border: none;
+}
+.toggle-btn i {
+  font-size: 20px;
+}
+
+.profile-dropdown {
+  position: relative;
+  cursor: pointer;
+}
+
+.profile-dropdown .dropdown-menu {
+  position: absolute;
+  
+  top: 100%;
+  right: -2px;
+  display: block; /* controlled by *ngIf */
+  min-width: 180px;
+  border-radius: 6px;
+  background: #fff;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  z-index: 999;
+}
+
+.profile-dropdown .dropdown-header {
+  font-weight: 600;
+  font-size: 14px;
+  padding: 8px 16px;
+}
+
+.profile-dropdown .dropdown-item:hover {
+  background-color: #e6f2ff;
+}
+
+/* TITLE TEXT */
+.brand .navbar-brand,
+.title-with-arrow {
+  font-size: 1.25rem;
+  font-weight: 600;
+  white-space: nowrap;          /* prevent wrapping */
+}
+
+/* RIGHT MENU FIX */
+.right-actions {
+  margin-left: auto;            /* pushes profile + bell to the right */
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.notification button {
+  background: #f8f9fa;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background 0.3s;
+}
+
+.notification button:hover {
+  background: #e2e6ea;
+}
+
+
+.badge {
+  font-size: 0.6rem;
+  font-weight: bold;
+}
+
+
+/* Welcome username styling */
+.welcome-username {
+  color: #0d6efd; /* Bootstrap primary blue */
+  font-weight: 500; /* medium weight */
+  font-size: 0.95rem;
+}
+
+/* Make the profile dropdown icon and welcome text aligned */
+.profile-dropdown {
+   font-weight: 300px;
+  color: rgb(0, 0, 0);
+  box-shadow: none !important;
+  text-shadow: none !important;
+  cursor: pointer;
+}

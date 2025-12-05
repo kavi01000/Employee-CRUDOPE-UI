@@ -1,0 +1,162 @@
+<!-- SEARCH + ADD BUTTON CARD -->
+<mat-card class="qualification-header-card mb-3">
+  <mat-card-content>
+    <div class="toolbar d-flex justify-content-end align-items-center">
+      <div class="toolbar-container">
+
+        <mat-form-field appearance="outline" class="search-field">
+          <mat-icon matPrefix>search</mat-icon>
+          <input matInput placeholder="Search Qualification" [(ngModel)]="searchTerm"
+            (ngModelChange)="applyFilter()" />
+          <button mat-icon-button matSuffix *ngIf="searchTerm" (click)="clearSearch()">
+            <mat-icon>close</mat-icon>
+          </button>
+        </mat-form-field>
+
+        <button mat-raised-button color="primary" class="add-btn" (click)="openAddModal()">
+          <mat-icon>add</mat-icon>
+          Add Qualification
+        </button>
+
+      </div>
+
+
+    </div>
+  </mat-card-content>
+</mat-card>
+
+<!-- TABLE CARD -->
+<mat-card class="qualification-table-card">
+  <mat-card-content>
+    <div class="table-container">
+      <table mat-table [dataSource]="filteredQualifications" class="styled-table">
+
+
+
+        <!-- Qualification Name -->
+ <ng-container matColumnDef="name">
+  <th mat-header-cell *matHeaderCellDef class="text-center"
+      style="cursor:pointer"
+      (click)="sortData('qualificationName')">
+
+    Qualification
+    <mat-icon>
+      {{ sortColumn === 'qualificationName'
+           ? (sortDirection === 'asc' ? 'arrow_upward' : 'arrow_downward')
+           : 'swap_vert' }}
+    </mat-icon>
+
+  </th>
+
+  <td mat-cell *matCellDef="let row">
+    <span class="truncate-text" matTooltip="{{ row.qualificationName }}">
+      {{ row.qualificationName }}
+    </span>
+  </td>
+</ng-container>
+
+
+        <!-- Is Active -->
+        <ng-container matColumnDef="isactive">
+          <th mat-header-cell *matHeaderCellDef class="text-center">Status</th>
+
+          <td mat-cell *matCellDef="let element">
+  <div class="status-chip" [ngClass]="element.isActive ? 'chip-active' : 'chip-inactive'">
+
+    <mat-icon class="chip-icon">
+      {{ element.isActive ? 'check_circle' : 'cancel' }}
+    </mat-icon>
+
+    <span class="chip-text">
+      {{ element.isActive ? 'Active' : 'Inactive' }}
+    </span>
+
+  </div>
+</td>
+
+        </ng-container>
+
+
+
+        <ng-container matColumnDef="action">
+          <th mat-header-cell *matHeaderCellDef class="text-center">Actions</th>
+          <td mat-cell *matCellDef="let row" class="text-center action-cell">
+            <button mat-icon-button color="primary" (click)="openEditModal(row)">
+              <mat-icon>edit</mat-icon>
+            </button>
+            <button mat-icon-button color="primary" (click)="DeleteQualification(row)">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </td>
+        </ng-container>
+
+
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+        <tr *ngIf="filteredQualifications.length === 0">
+          <td colspan="4" class="text-center text-muted py-3">No qualifications found</td>
+        </tr>
+
+      </table>
+    </div>
+  </mat-card-content>
+</mat-card>
+<!-- TABLE FOOTER -->
+
+<footer class="app-footer">
+  <div class="footer-left">
+    © 2025 <span class="company-name">VKOMAK Technologies</span>
+  </div>
+
+  <div class="footer-right">
+    {{ currentDate }}
+  </div>
+</footer>
+
+
+<!-- === MODAL === -->
+<div class="custom-modal-backdrop" *ngIf="showModal">
+  <div class="custom-modal">
+
+    <!-- Modal Header -->
+    <div class="modal-header">
+      <h3 >{{ modalTitle }}</h3>
+      <button class="close-btn style2" (click)="closeModal()">
+        <i class="bi bi-x"></i>
+      </button>
+    </div>
+    <div class="modal-body">
+
+      <!-- Qualification Name -->
+      <mat-form-field appearance="outline" class="w-100 mb-3">
+        <mat-label>Qualification Name</mat-label>
+        <input matInput [(ngModel)]="currentItem.qualificationName" required placeholder="Enter Qualification Name" />
+      </mat-form-field>
+
+      <!-- ✔ IsActive Checkbox -->
+      <!-- ✔ IsActive Checkbox -->
+
+      <div class="isactive-field">
+        <mat-checkbox [(ngModel)]="currentItem.isActive">
+          Is Active
+        </mat-checkbox>
+      </div>
+
+
+    </div>
+
+    <!-- Modal Footer -->
+    <div class="modal-footer">
+      <button mat-stroked-button class="reset-btn" (click)="resetForm()">Reset</button>
+
+      <button mat-raised-button color="primary" [class.enabled]="isFormValid()" [disabled]="!isFormValid()"
+        (click)="save()">
+        Save
+      </button>
+    </div>
+
+
+  </div>
+</div>

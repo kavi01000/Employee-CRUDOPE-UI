@@ -1,0 +1,431 @@
+/* CARD 1 - Toolbar Card */
+.department-toolbar-card {
+ padding: 16px;
+    margin-bottom: 10px;
+    height: 110px;
+    margin-left: 16px;
+    margin-right: 16px;
+    border-radius: 8px;
+}
+.add-dept-btn {
+  width: 200px;         /* set width */
+  height: 61px;
+    margin-bottom: 14px;          /* set height */
+  margin-left: 20px;    /* add left spacing */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;     
+
+   border-radius: 8px;        /* space between icon + text */
+  font-size: 15px;
+}
+
+
+.search-field {
+  width: 270px;          /* set your width */
+  margin-top: 8px;   
+  margin-left:169px;   /* top space */
+  float: right; 
+  border-radius: 8px;
+          /* right alignment */
+}
+
+/* Height control */
+.search-field .mat-mdc-form-field-flex {
+  height: 48px !important;   /* standard material height */
+  align-items: center;
+  border-radius: 8px;
+}
+
+/* Blue border when active */
+.search-field .mat-mdc-form-field-outline {
+  --mdc-theme-primary: #0357aa;
+}
+
+/* Icon color */
+.search-field .mat-mdc-form-field-icon-suffix,
+.search-field .mat-mdc-form-field-icon-prefix {
+  color: #0357aa !important;
+}
+
+.search-field input {
+  font-size: 15px;
+  height: 36px;              /* inner input height */
+  padding-top: 5px;
+}
+
+/* CARD 2 - Table Card */
+.department-table-card {
+  height:670px;
+  margin:8px 16px;
+  padding: 0;
+}
+
+/* Scrollable table container */
+.table-container {
+  max-height: 687px;          /* Set your desired height */
+  overflow-y: auto;
+  border-radius: 4px;
+}
+/* Sort Icon Size */
+th mat-icon {
+  font-size: 18px;     /* change size */
+  height: 18px;        /* icon height */
+  width: 18px;         /* icon width */
+  line-height: 18px;   /* align vertically */
+  vertical-align: middle;
+  margin-left: 4px;    /* spacing from text */
+}
+
+/* Fix table header */
+.styled-table th {
+  position: sticky;
+  top: 0;
+  background: #e3f2fd;        /* Light material blue */
+  z-index: 10;
+  padding: 10px;
+  font-weight: 600;
+  text-align: center;
+}
+
+/* Table cell styling */
+.styled-table td {
+  padding: 8px 10px;
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+}
+
+/* Scrollbar styling */
+.table-container::-webkit-scrollbar {
+  width: 6px;
+}
+
+.table-container::-webkit-scrollbar-thumb {
+  background: #90caf9;
+  border-radius: 10px;
+}
+
+.table-container::-webkit-scrollbar-track {
+  background: #e3f2fd;
+}
+
+/* ======================================================= */
+/*                  TABLE CONTAINER & TABLE                */
+/* ======================================================= */
+
+.table-container {
+  width: 100%;
+  overflow-x: auto;
+  border-radius: 10px;
+  margin-top: 3px;
+  box-shadow: 0 4px 18px rgba(0,0,0,0.08);
+}
+
+/* Sticky Header + Gradient */
+.styled-table th {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: linear-gradient(90deg, #409efe, #0357aa);
+  color: white;
+  padding: 17px 85px;  
+  font-size: 21px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  white-space: nowrap;
+  border-right: 1px solid rgba(185, 22, 22, 0.18);
+}
+/* Column widths */
+.col-name { width: 1800px; min-width: 180px; max-width: 180px; }
+.col-code { width: 150px; min-width: 150px; max-width: 150px; }
+.col-isActive { text-align: center !important; width: 120px; min-width: 120px; max-width: 120px; }
+.col-action { width: 150px; min-width: 150px; max-width: 150px; }
+
+
+.styled-table th:first-child {
+  border-top-left-radius: 10px;
+}
+
+.styled-table th:last-child {
+  border-top-right-radius: 10px;
+}
+
+/* Table Cells */
+.styled-table td {
+  padding: 8px 16px;
+  font-size: 16px;
+  border-bottom: 1px solid #ececec;
+  text-align: left;
+  color: #333;
+}
+
+/* Row Hover */
+.styled-table tr:hover td {
+  background: #c0dbff;
+  transition: 0.2s;
+}
+
+/* Hide Action Buttons By Default */
+.styled-table td button {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s;
+}
+
+.styled-table tr:hover td button {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Space Between Action Buttons */
+.styled-table td button + button {
+  margin-left: 5px;
+}
+
+/* ======================================================= */
+/*                  STATUS BOX (Active / Inactive)         */
+/* ======================================================= */
+/* Wrapper */
+
+
+
+.status-box {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 16px;
+
+  font-weight: 400;
+}
+/* Base Chip */
+.status-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  border-radius: 20px;         /* CHIP SHAPE */
+  font-size: 14px;
+  font-weight: 400;
+  width: auto;
+}
+
+/* ACTIVE CHIP */
+.active-chip {
+  background-color: #ebeaea;   /* light green background */
+
+  color: #161616;
+}
+
+.active-chip .chip-icon {
+  color: #0f8a20 !important;
+}
+
+/* INACTIVE CHIP */
+.inactive-chip {
+  background-color:  #ebeaea; /* light red background */
+
+  color: #111111;
+}
+
+.inactive-chip .chip-icon {
+  color: #d90000 !important;
+}
+
+
+.app-footer {
+  width: 100%;
+  padding: 19px 40px;
+background: #ffffff;
+  border-top: 1px solid #dcdcdc;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 17px;
+  color: #444;
+  position: fixed;      /* Sticks to bottom */
+  bottom: 0;
+  left: 0;
+  z-index: 10;
+}
+
+.footer-left {
+  font-weight: 500;
+}
+
+.footer-right {
+  font-family: monospace;
+}
+.company-name {
+  color: #1976d2; /* Material Primary Blue */
+  font-weight: 500;
+}
+/* ======================================================= */
+/*                         MODAL                           */
+/* ======================================================= */
+
+.custom-modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.55);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.custom-modal {
+  width: 20%;
+  background: #fff;
+  border-radius: 14px;
+  overflow: hidden;
+  animation: popup 0.25s ease-out;
+  box-shadow:
+    0px 4px 12px rgba(61, 164, 196, 0.15),
+    0px 12px 28px rgba(78, 173, 228, 0.2);
+}
+
+@keyframes popup {
+  from { transform: scale(0.8); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+/* Modal Header */
+.modal-header {
+  background: linear-gradient(to right,#97cdff, #95ccfe );
+  padding: 15px 20px;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modal-header h3 {
+  margin: 0;
+  color:rgb(0, 0, 0);
+  font-size: 20px;
+  font-weight: 400;
+}
+
+
+/* Modal Body */
+.modal-body {
+  padding: 20px;
+}
+
+/* Modal Footer */
+.modal-footer {
+  background: linear-gradient(to right, #97cdff, #95ccfe   );
+  padding: 12px 20px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 15px;
+}
+.mb-3 ::ng-deep .mat-mdc-checkbox .mdc-checkbox__native-control:checked ~ .mdc-checkbox__background {
+  border-color: #2b88e6 !important;
+  background-color: #137feb !important;
+}
+
+.mb-3 ::ng-deep .mdc-checkbox__background {
+  border-color: #999 !important;
+}
+.modal-footer button {
+  font-weight: 400;
+}
+mat-error {
+ color:  rgb(252, 72, 72) !important;
+  font-size: 13px;   /* Optional */
+  font-weight: 500;  /* Optional */
+}
+/* Wrapper box (input-like) */
+.isactive-field {
+  border: 1px solid #999;    /* blue border */
+  padding: 8px 16px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  height: 56px;
+  background: white;
+}
+
+/* REMOVE default checkbox margin */
+.isactive-field .mat-mdc-checkbox {
+  margin: 0 !important;
+}
+
+/* === CHECKBOX COLORS === */
+
+/* CHECKED state – Blue border + Blue fill */
+.isactive-field ::ng-deep .mat-mdc-checkbox .mdc-checkbox__native-control:checked ~ .mdc-checkbox__background {
+  border-color:  #0357aa !important;
+  background-color: #0357aa !important;
+
+  /* Ripple state colors */
+  --mdc-checkbox-selected-focus-state-layer-color: #0357aa !important;
+  --mdc-checkbox-selected-hover-state-layer-color: #0357aa !important;
+  --mdc-checkbox-selected-pressed-state-layer-color: #0357aa !important;
+}
+button[disabled] {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* UNCHECKED state – Blue border */
+.isactive-field ::ng-deep .mdc-checkbox__background {
+  border-color: #2f64b4 !important;
+}
+
+/* LABEL styling */
+.isactive-field ::ng-deep .mat-mdc-checkbox-label {
+  color: #0357aa !important;
+  font-weight: 500 !important;
+}
+.reset-btn {
+  background: white !important;
+  color: black !important;
+    font-weight: 200;
+}
+
+.close-btn.style2 {
+  background: #ffffff;
+  border:  #000000;
+  color: #000000;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.close-btn.style2:hover {
+  background: #000;
+  transform: scale(1.1);
+}
+
+.close-btn {
+  background:white ;
+  border: none;
+  font-size: 24px;
+  color: rgb(0, 0, 0);
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.close-btn:hover {
+  color: #bbdefb;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .custom-modal {
+    width: 90%;
+  }
+}
